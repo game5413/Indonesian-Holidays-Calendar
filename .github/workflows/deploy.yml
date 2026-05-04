@@ -1,0 +1,43 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Python application
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.14"
+        cache: "pip"
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    - name: Generate Calendar
+      run: python main.py --output ics,json --name calendar
+    - name: Get current year
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y')"
+    - name: Create Release
+      uses: softprops/action-gh-release@v3
+      with:
+        name: ${{ steps.date.outputs.date }}
+        files: |
+          calendar.ics
+          calendar.json
+          LICENSE
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
