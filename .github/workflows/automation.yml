@@ -2,11 +2,11 @@ name: Automation
 
 on:
   schedule:
-    - cron: 3 * * * *
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
-  publish-new-calendar:
+  call-action-publish-calendar:
     name: Publish Calendar
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
