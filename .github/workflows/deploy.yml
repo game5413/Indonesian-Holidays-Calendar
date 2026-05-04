@@ -33,6 +33,7 @@ jobs:
       if: github.ref_type == 'tag'
       with:
         name: ${{ steps.date.outputs.date }}
+        tag_name: ${{ steps.date.outputs.date }}
         files: |
           calendar.ics
           calendar.json
