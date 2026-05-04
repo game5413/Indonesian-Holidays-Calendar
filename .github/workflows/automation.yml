@@ -3,6 +3,8 @@ name: Automation
 on:
   schedule:
     - cron: '*/5 * * * *'
+  workflow_dispatch:
+    
 jobs:
   call-action-publish-calendar:
     name: Call Publish Action
