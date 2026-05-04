@@ -1,4 +1,4 @@
-name: Scheduled Patrol Tests
+name: Automation
 
 on:
   schedule:
@@ -7,6 +7,8 @@ on:
 
 jobs:
   publish-new-calendar:
-    name: Android Tests for {{matrix.language}}
+    name: Publish Calendar
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
+    permissions:
+      contents: write
