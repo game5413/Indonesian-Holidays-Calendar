@@ -1,0 +1,12 @@
+name: Scheduled Patrol Tests
+
+on:
+  schedule:
+    - cron: 3 * * * *
+  workflow_dispatch:
+
+jobs:
+  publish-new-calendar:
+    name: Android Tests for {{matrix.language}}
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
