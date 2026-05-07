@@ -29,6 +29,26 @@ https://github.com/game5413/Indonesian-Holidays-Calendar/releases/latest/downloa
 
 Download [latest](https://github.com/game5413/Indonesian-Holidays-Calendar/releases/latest) calendar event, then import manually into your calendar app.
 
+### API
+
+Fetch holiday data as JSON for a specific year:
+
+```bash
+curl -L \
+  -H "Accept: application/json" \
+  https://github.com/game5413/Indonesian-Holidays-Calendar/releases/download/{year}/calendar.json
+```
+
+Replace `{year}` with the target year, e.g. `2026`.
+
+For latest year:
+
+```bash
+curl -L \
+  -H "Accept: application/json" \
+  https://github.com/game5413/Indonesian-Holidays-Calendar/releases/latest/download/calendar.json
+```
+
 ## Source
 
 Data scraped from [kalenderku.id](https://kalenderku.id). Their say data sourced from **SKB 3 Menteri** (Surat Keputusan Bersama), a joint decree issued annually and signed by:
